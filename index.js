@@ -44,6 +44,24 @@ const buttons = document.querySelectorAll(".button-click");
 const widthRange = document.getElementById("width-range");
 const heightRange = document.getElementById("height-range");
 
+let zoomLevel = 1;
+const zoomOutButton = document.getElementById("zoom-out");
+const zoomInButton = document.getElementById("zoom-in");
+
+zoomOutButton.addEventListener("click", () => {
+  if (zoomLevel > 0.5) {
+    zoomLevel -= 0.1;
+    container.style.transform = `scale(${zoomLevel})`;
+  }
+});
+
+zoomInButton.addEventListener("click", () => {
+  if (zoomLevel < 2) {
+    zoomLevel += 0.1;
+    container.style.transform = `scale(${zoomLevel})`;
+  }
+});
+
 widthRange.addEventListener("input", () => {
   widthValue.value = widthRange.value.padStart(2, "0");
 });
