@@ -44,21 +44,15 @@ const buttons = document.querySelectorAll(".button-click");
 const widthRange = document.getElementById("width-range");
 const heightRange = document.getElementById("height-range");
 
-let zoomLevel = 1;
-const zoomOutButton = document.getElementById("zoom-out");
-const zoomInButton = document.getElementById("zoom-in");
+const zoomLevel = document.getElementById("zoom-level");
 
-zoomOutButton.addEventListener("click", () => {
-  if (zoomLevel > 0.5) {
-    zoomLevel -= 0.1;
-    container.style.transform = `scale(${zoomLevel})`;
-  }
-});
+zoomLevel.addEventListener("input", () => {
+  const zoomLevelValue = +zoomLevel.value; // Convert the value to a number
 
-zoomInButton.addEventListener("click", () => {
-  if (zoomLevel < 2) {
-    zoomLevel += 0.1;
-    container.style.transform = `scale(${zoomLevel})`;
+  if (zoomLevelValue === 100) {
+    container.style.zoom = "1";
+  } else {
+    container.style.zoom = `${zoomLevelValue / 10}`;
   }
 });
 
