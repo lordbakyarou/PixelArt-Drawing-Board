@@ -46,14 +46,16 @@ const heightRange = document.getElementById("height-range");
 
 const zoomLevel = document.getElementById("zoom-level");
 
-zoomLevel.addEventListener("input", () => {
-  const zoomLevelValue = +zoomLevel.value; // Convert the value to a number
+const zoomValue = document.getElementById("zoom-value");
 
-  if (zoomLevelValue === 100) {
-    container.style.zoom = "1";
-  } else {
-    container.style.zoom = `${zoomLevelValue / 10}`;
-  }
+zoomValue.textContent = zoomLevel.value;
+
+zoomLevel.addEventListener("input", () => {
+  const zoomLevelNumber = parseInt(zoomLevel.value);
+  container.style.zoom = `${zoomLevelNumber / 10}`;
+
+  // Update the zoom value display
+  zoomValue.innerText = zoomLevelNumber.toString().padStart(2, "0");
 });
 
 widthRange.addEventListener("input", () => {
