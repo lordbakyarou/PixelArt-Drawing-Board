@@ -1,3 +1,5 @@
+//The code allows users to draw on a grid using either a mouse or touch input. It also supports features like erasing, changing colors, zooming, saving the drawing, and undoing actions.
+
 let events = {
   mouse: {
     down: "mousedown",
